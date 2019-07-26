@@ -9,7 +9,8 @@ RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_confi
 # 安装（如php apache mysql等
 RUN apt update
 RUN apt-get install python3-pip -y --option=Dpkg::Options::=--force-confdef
-RUN pip3 install flask tensorflow==1.12.3 -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+RUN pip3 install flask -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
+RUN pip3 install https://github.com/inoryy/tensorflow-optimized-wheels/releases/download/v1.12.0/tensorflow-1.12.0-cp36-cp36m-linux_x86_64.whl
 # 添加普通用户ciscn与设置密码
 RUN groupadd ciscn && \
 	useradd -g ciscn ciscn -m && \
@@ -17,7 +18,7 @@ RUN groupadd ciscn && \
 	sed -i 's/^ciscn:!/ciscn:'$password'/g' /etc/shadow
 
 # 缺省flag
-RUN echo "flag{flag_test}" > "/flag"
+RUN echo "flag{7fkjujwrefu4bje1yof33anrx5zsddr3}" > "/flag"
 RUN chmod 644 /flag
 
 # 复制源码
