@@ -10,7 +10,7 @@ RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_confi
 RUN apt update
 RUN apt-get install python3-pip -y --option=Dpkg::Options::=--force-confdef
 RUN pip3 install flask -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
-RUN pip3 install https://github.com/inoryy/tensorflow-optimized-wheels/releases/download/v1.12.0/tensorflow-1.12.0-cp36-cp36m-linux_x86_64.whl
+RUN pip3 install https://github.com/inoryy/tensorflow-optimized-wheels/releases/download/v1.12.0/tensorflow-1.12.0-cp36-cp36m-linux_x86_64.whl -i https://pypi.tuna.tsinghua.edu.cn/simple some-package
 # 添加普通用户ciscn与设置密码
 RUN groupadd ciscn && \
 	useradd -g ciscn ciscn -m && \
